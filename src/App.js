@@ -48,27 +48,36 @@ const initialFacts = [
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-
   return (
     <>
-      <header className="header">
-        <div className="logo">
-          <img src="logo.png" alt="Today I Learned Logo" />
-          <h1>Today I Learned</h1>
-        </div>
-        <button
-          className="btn btn-large btn-open btn-primary"
-          onClick={() => setShowForm((show) => !show)}
-        >
-          Share a fact
-        </button>
-      </header>
+      <Header showForm={showForm} setShowForm={setShowForm} />
       {showForm ? <NewFactForm /> : null}
 
       <main className="main">
         <CategoryFilter />
         <FactList />
       </main>
+    </>
+  );
+}
+
+function Header({ showForm, setShowForm }) {
+  const appTitle = "Today I Learned";
+
+  return (
+    <>
+      <header className="header">
+        <div className="logo">
+          <img src="logo.png" alt="Today I Learned Logo" />
+          <h1> {appTitle} </h1>
+        </div>
+        <button
+          className="btn btn-large btn-open btn-primary"
+          onClick={() => setShowForm((show) => !show)}
+        >
+          {showForm ? "Close" : "Share a Fact"}
+        </button>
+      </header>
     </>
   );
 }
@@ -82,7 +91,7 @@ function CategoryFilter() {
     <aside>
       <ul>
         <li className="categorie">
-          <button class="btn btn-primary btn-all-categories">All</button>
+          <button className="btn btn-primary btn-all-categories">All</button>
         </li>
         {CATEGORIES.map((cat) => (
           <li key={cat.name} className="category">
