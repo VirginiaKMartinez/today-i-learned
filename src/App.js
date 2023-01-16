@@ -82,14 +82,53 @@ function Header({ showForm, setShowForm }) {
   );
 }
 
+function isValidHttpUrl(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
 function NewFactForm() {
   const [textField, setTextField] = useState("");
   const [sourceField, setSourceField] = useState("");
   const [category, setCategory] = useState("");
   const textLenght = textField.length;
+  function handleSubmit(event) {
+    //1. Prevent the browser reload
+    event.preventDefault();
+
+    //2. Check if the data is valid. If so, create a new fact
+
+    if (
+      textField &&
+      isValidHttpUrl(sourceField) &&
+      category &&
+      textField <= 200
+    ) {
+      //3. Create a new fact object
+      const newFact = {
+        id: Math.round(Math.random() * 100000000),
+        text: textField,
+        source: sourceField,
+        category,
+        votesInteresting: 0,
+        votesMindblowing: 0,
+        votesFalse: 0,
+        createdIn: new Date().getCurrentYear(),
+      };
+
+      //4. Add the new fact to the UI: Add the new fact to state
+      //5. Reset the input fields
+      //6. Close the form
+    }
+  }
 
   return (
-    <form className="fact-form">
+    <form className="fact-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Share a fact with the world..."
