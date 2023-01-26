@@ -48,14 +48,16 @@ const initialFacts = [
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [facts, setFacts] = useState(initialFacts);
+
   return (
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
-      {showForm ? <NewFactForm /> : null}
+      {showForm ? <NewFactForm setFacts={setFacts} /> : null}
 
       <main className="main">
         <CategoryFilter />
-        <FactList />
+        <FactList facts={facts} setFacts={setFacts} />
       </main>
     </>
   );
@@ -92,7 +94,7 @@ function isValidHttpUrl(string) {
   return url.protocol === "http:" || url.protocol === "https:";
 }
 
-function NewFactForm() {
+function NewFactForm({ setFacts }) {
   const [textField, setTextField] = useState("");
   const [sourceField, setSourceField] = useState("");
   const [category, setCategory] = useState("");
@@ -100,7 +102,7 @@ function NewFactForm() {
   function handleSubmit(event) {
     //1. Prevent the browser reload
     event.preventDefault();
-
+    console.log(textField, sourceField, category);
     //2. Check if the data is valid. If so, create a new fact
 
     if (
@@ -118,10 +120,11 @@ function NewFactForm() {
         votesInteresting: 0,
         votesMindblowing: 0,
         votesFalse: 0,
-        createdIn: new Date().getCurrentYear(),
+        createdIn: new Date().getFullYear(),
       };
 
       //4. Add the new fact to the UI: Add the new fact to state
+      setFacts((facts) => [newFact, ...facts]);
       //5. Reset the input fields
       //6. Close the form
     }
@@ -180,9 +183,7 @@ function CategoryFilter() {
   );
 }
 
-function FactList() {
-  const facts = initialFacts;
-
+function FactList({ facts }) {
   return (
     <section>
       <ul className="facts-list">
