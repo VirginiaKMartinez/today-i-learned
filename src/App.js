@@ -95,27 +95,23 @@ function isValidHttpUrl(string) {
 }
 
 function NewFactForm({ setFacts }) {
-  const [textField, setTextField] = useState("");
-  const [sourceField, setSourceField] = useState("");
+  const [text, setText] = useState("");
+  const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
-  const textLenght = textField.length;
+  const textLength = text.length;
   function handleSubmit(event) {
     //1. Prevent the browser reload
     event.preventDefault();
-    console.log(textField, sourceField, category);
+    console.log(text, source, category, "funcion newfactform");
     //2. Check if the data is valid. If so, create a new fact
 
-    if (
-      textField &&
-      isValidHttpUrl(sourceField) &&
-      category &&
-      textField <= 200
-    ) {
+    if (text && isValidHttpUrl(source) && category && textLength <= 200) {
+      console.log("Dentro del if");
       //3. Create a new fact object
       const newFact = {
         id: Math.round(Math.random() * 100000000),
-        text: textField,
-        source: sourceField,
+        text,
+        source,
         category,
         votesInteresting: 0,
         votesMindblowing: 0,
@@ -125,6 +121,7 @@ function NewFactForm({ setFacts }) {
 
       //4. Add the new fact to the UI: Add the new fact to state
       setFacts((facts) => [newFact, ...facts]);
+
       //5. Reset the input fields
       //6. Close the form
     }
@@ -135,15 +132,15 @@ function NewFactForm({ setFacts }) {
       <input
         type="text"
         placeholder="Share a fact with the world..."
-        value={textField}
-        onChange={(e) => setTextField(e.target.value)}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
       />
-      <span> {200 - textLenght} </span>
+      <span> {200 - textLength} </span>
       <input
         type="text"
         placeholder="Trustworthy source..."
-        value={sourceField}
-        onChange={(e) => setSourceField(e.target.value)}
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
       />
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">Choose category:</option>
