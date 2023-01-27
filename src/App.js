@@ -46,6 +46,19 @@ const initialFacts = [
   },
 ];
 
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <span style={{ fontSize: "40px" }}>{count}</span>
+      <button className="btn btn-large" onClick={() => setCount((c) => c + 1)}>
+        +1
+      </button>
+    </div>
+  );
+}
+
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState(initialFacts);
@@ -123,6 +136,9 @@ function NewFactForm({ setFacts }) {
       setFacts((facts) => [newFact, ...facts]);
 
       //5. Reset the input fields
+      setText("");
+      setSource("");
+      setCategory("");
       //6. Close the form
     }
   }
@@ -203,8 +219,9 @@ function Fact({ fact }) {
           href={fact.source}
           target="_blank"
           rel="noreferrer"
-        />
-        (Source)
+        >
+          (Source)
+        </a>
       </p>
       <span
         className="tag"
