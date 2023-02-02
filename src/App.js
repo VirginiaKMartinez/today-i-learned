@@ -147,6 +147,7 @@ function NewFactForm({ setFacts, setShowForm }) {
   const [text, setText] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
   const textLength = text.length;
 
   async function handleSubmit(event) {
@@ -169,11 +170,12 @@ function NewFactForm({ setFacts, setShowForm }) {
       // };
 
       //3.Upload fact yo Supabase and receive the new fact object
+      setIsUploading(true);
       const { data: newFact, error } = await supabase
         .from("facts")
         .insert([{ text, source, category }])
         .select();
-
+      setIsUploading(false);
       //4. Add the new fact to the UI: Add the new fact to state
       setFacts((facts) => [newFact[0], ...facts]);
 
@@ -201,7 +203,11 @@ function NewFactForm({ setFacts, setShowForm }) {
         value={source}
         onChange={(e) => setSource(e.target.value)}
       />
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        disabled={isUploading}
+      >
         <option value="">Choose category:</option>
         {CATEGORIES.map((cat) => (
           <option key={cat.name} value={cat.name}>
@@ -210,7 +216,9 @@ function NewFactForm({ setFacts, setShowForm }) {
           </option>
         ))}
       </select>
-      <button className="btn btn-large btn-primary">Post</button>
+      <button className="btn btn-large btn-primary" disabled={isUploading}>
+        Post
+      </button>
     </form>
   );
 }
