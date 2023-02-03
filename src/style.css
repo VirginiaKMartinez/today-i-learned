@@ -5,10 +5,10 @@
 }
 
 body {
-  background-color: #292524;
+  background-color: #1e293b;
   font-family: "Sono", sans-serif;
-  color: #fafaf9;
-  padding: 48px 64px;
+  color: #f8fafc;
+  padding: 48px 64px 0px;
 }
 
 /* LAYOUT */
@@ -29,11 +29,13 @@ body {
   display: grid;
   grid-template-columns: 250px 1fr;
   gap: 48px;
+  height: calc(100vh - 48px - 68px - 40px);
 }
 
 @media (max-width: 900px) {
   .main {
     grid-template-columns: 1fr;
+    height: auto;
   }
 }
 
@@ -61,10 +63,19 @@ h1 {
   margin-top: 6px;
 }
 
+.facts-container {
+  overflow-y: scroll;
+  padding-bottom: 40px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .fact {
   font-size: 20px;
   line-height: 1.4;
-  background-color: #44403c;
+  background-color: #334155;
   margin-bottom: 16px;
   padding: 16px 24px;
   letter-spacing: -1px;
@@ -84,6 +95,12 @@ h1 {
   font-size: 32px;
   font-weight: 600;
   margin-top: 24px;
+}
+
+.disputed {
+  color: #ef4444;
+  font-weight: 600;
+  margin-right: 10px;
 }
 
 @media (max-width: 1200px) {
@@ -112,7 +129,7 @@ h1 {
 
 .vote-buttons button {
   border: none;
-  background-color: #78716c;
+  background-color: #64748b;
   font-size: 18px;
   padding: 6px 12px;
   border-radius: 100px;
@@ -123,11 +140,11 @@ h1 {
 }
 
 .vote-buttons button:hover {
-  background-color: #292524;
+  background-color: #1e293b;
 }
 
 .vote-buttons button:disabled {
-  background-color: #44403c;
+  background-color: #334155;
 }
 
 ul {
@@ -136,7 +153,7 @@ ul {
 
 .source:link,
 .source:visited {
-  color: #a8a29e;
+  color: #94a3b8;
   text-decoration: none;
   margin-left: 12px;
   transition: 0.3s;
@@ -185,7 +202,7 @@ ul {
 /* FORM */
 
 .fact-form {
-  background-color: #44403c;
+  background-color: #334155;
   margin-bottom: 40px;
   padding: 16px 40px;
   display: flex;
@@ -197,7 +214,7 @@ ul {
 .fact-form input,
 .fact-form select {
   width: 220px;
-  background-color: #78716c;
+  background-color: #64748b;
   border: none;
   border-radius: 100px;
   padding: 16px;
@@ -207,7 +224,7 @@ ul {
 }
 
 .fact-form input::placeholder {
-  color: #a8a29e;
+  color: #94a3b8;
 }
 
 .fact-form input:first-child {
@@ -233,5 +250,31 @@ ul {
   .fact-form input,
   .fact-form select {
     width: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  #root {
+    padding: 24px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .fact-form {
+    padding: 16px;
+  }
+
+  .fact {
+    padding: 12px 16px;
   }
 }
