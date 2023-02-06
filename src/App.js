@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import DarkMode from "./components/dark-mode/DarkMode";
 import supabase from "./supabase";
 import "./style.css";
 
@@ -46,19 +47,6 @@ const CATEGORIES = [
 //     createdIn: 2015,
 //   },
 // ];
-
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <span style={{ fontSize: "40px" }}>{count}</span>
-      <button className="btn btn-large" onClick={() => setCount((c) => c + 1)}>
-        +1
-      </button>
-    </div>
-  );
-}
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -120,8 +108,9 @@ function Header({ showForm, setShowForm }) {
       <header className="header">
         <div className="logo">
           <img src="logo.png" alt="Today I Learned Logo" />
-          <h1> {appTitle} </h1>
+          <h1 className="text-background"> {appTitle} </h1>
         </div>
+        <DarkMode />
         <button
           className="btn btn-large btn-open btn-primary"
           onClick={() => setShowForm((show) => !show)}
@@ -269,7 +258,9 @@ function FactList({ facts, setFacts }) {
           <Fact key={fact.id} fact={fact} setFacts={setFacts} />
         ))}
       </ul>
-      <p> There are {facts.length} facts in the database. Add your own! </p>
+      <p className="text-background">
+        There are {facts.length} facts in the database. Add your own!
+      </p>
     </section>
   );
 }
