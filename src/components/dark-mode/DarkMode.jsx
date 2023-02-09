@@ -1,6 +1,5 @@
 import "./darkMode.css";
-
-import { ChangeEventHandler } from "react";
+import { Icon } from "@iconify/react";
 
 // 1
 const setDark = () => {
@@ -41,21 +40,53 @@ const toggleTheme = (e) => {
 
 const DarkMode = () => {
   return (
-    <div className="toggle-theme-wrapper">
-      <span>🌒</span>
-      <label className="toggle-theme" htmlFor="checkbox">
-        <input
-          type="checkbox"
-          id="checkbox"
-          // 6
-          onChange={toggleTheme}
-          defaultChecked={defaultDark}
-        />
-        <div className="slider round"></div>
-      </label>
-      <span>☀️</span>
-    </div>
+    <label>
+      <input
+        className="toggle-checkbox"
+        type="checkbox"
+        id="checkbox"
+        onChange={toggleTheme}
+        defaultChecked={defaultDark}
+      ></input>
+      <div className="toggle-slot">
+        <div className="sun-icon-wrapper">
+          <Icon
+            icon="ph:sun"
+            className="iconify sun-icon"
+            data-icon="feather-sun"
+            data-inline="false"
+          />
+        </div>
+        <div className="toggle-button"></div>
+        <div className="moon-icon-wrapper">
+          <Icon
+            icon="ph:moon-bold"
+            className="iconify moon-icon"
+            data-icon="feather-moon"
+            data-inline="false"
+          />
+        </div>
+      </div>
+    </label>
   );
 };
+// const DarkMode = () => {
+//   return (
+//     <div className="toggle-theme-wrapper">
+//       <span className="toggle-text">Light</span>
+//       <label className="toggle-theme" htmlFor="checkbox">
+//         <input
+//           type="checkbox"
+//           id="checkbox"
+//           // 6
+//           onChange={toggleTheme}
+//           defaultChecked={defaultDark}
+//         />
+//         <div className="slider round"></div>
+//       </label>
+//       <span className="toggle-text">Dark</span>
+//     </div>
+//   );
+// };
 
 export default DarkMode;

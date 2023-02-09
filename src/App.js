@@ -106,17 +106,21 @@ function Header({ showForm, setShowForm }) {
   return (
     <>
       <header className="header">
-        <div className="logo">
-          <img src="logo.png" alt="Today I Learned Logo" />
-          <h1 className="text-background"> {appTitle} </h1>
+        <div className="logo-switch">
+          <div className="logo">
+            <img src="logo.png" alt="Today I Learned Logo" />
+            <h1 className="text-background"> {appTitle} </h1>
+          </div>
+          <DarkMode />
         </div>
-        <DarkMode />
-        <button
-          className="btn btn-large btn-open btn-primary"
-          onClick={() => setShowForm((show) => !show)}
-        >
-          {showForm ? "Close" : "Share a Fact"}
-        </button>
+        <div className=" btn-open ">
+          <button
+            className="btn btn-large btn-primary"
+            onClick={() => setShowForm((show) => !show)}
+          >
+            {showForm ? "Close" : "Share a Fact"}
+          </button>
+        </div>
       </header>
     </>
   );
@@ -185,7 +189,7 @@ function NewFactForm({ setFacts, setShowForm }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <span> {200 - textLength} </span>
+      <span className="form-text"> {200 - textLength} </span>
       <input
         type="text"
         placeholder="Trustworthy source..."

@@ -6,15 +6,7 @@
 /* CSS VARIABLES FOR THE THEMES LIGHT/DARK */
 
 :root {
-  --primary-color: #1e293b;
-  --secondary-color: #334155;
-  --primary-font-color: #f8fafc;
-  --secondary-font-color: #f8fafc;
-  --button-background-color: #64748b;
-  --link-color: #94a3b8;
-}
-
-[data-theme="dark"] {
+  --body-background-color: linear-gradient(#e0eaff, #f8fafc);
   --primary-color: #f8fafc;
   --secondary-color: #cbd5e1;
   --primary-font-color: #f8fafc;
@@ -23,8 +15,18 @@
   --link-color: #64748b;
 }
 
+[data-theme="dark"] {
+  --body-background-color: linear-gradient(#1e293b, #212e43);
+  --primary-color: #1e293b;
+  --secondary-color: #334155;
+  --primary-font-color: #f8fafc;
+  --secondary-font-color: #f8fafc;
+  --button-background-color: #64748b;
+  --link-color: #94a3b8;
+}
+
 body {
-  background-color: var(--primary-color);
+  background-image: var(--body-background-color);
   font-family: "Sono", sans-serif;
 
   padding: 48px 64px 0px;
@@ -39,10 +41,15 @@ body {
 
 .header {
   margin-bottom: 40px;
+  display: grid;
+  row-gap: 48px;
+}
+/* .header {
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
 .main {
   display: grid;
@@ -64,6 +71,11 @@ body {
 }
 
 /* ELEMENTS */
+.logo-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .logo {
   display: flex;
@@ -134,7 +146,6 @@ h1 {
   font-size: 14px;
   font-family: "Coiny", sans-serif;
   color: var(--primary-font-color);
-  /* background-color: #f87171; */
   padding: 3px 10px 0 10px;
   border-radius: 100px;
 }
@@ -219,6 +230,11 @@ ul {
 
 .btn-category {
   width: 100%;
+}
+
+.btn-open {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* FORM */
