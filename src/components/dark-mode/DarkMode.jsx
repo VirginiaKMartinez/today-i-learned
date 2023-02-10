@@ -70,23 +70,5 @@ const DarkMode = () => {
     </label>
   );
 };
-// const DarkMode = () => {
-//   return (
-//     <div className="toggle-theme-wrapper">
-//       <span className="toggle-text">Light</span>
-//       <label className="toggle-theme" htmlFor="checkbox">
-//         <input
-//           type="checkbox"
-//           id="checkbox"
-//           // 6
-//           onChange={toggleTheme}
-//           defaultChecked={defaultDark}
-//         />
-//         <div className="slider round"></div>
-//       </label>
-//       <span className="toggle-text">Dark</span>
-//     </div>
-//   );
-// };
 
 export default DarkMode;

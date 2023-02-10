@@ -1,83 +1,3 @@
-/* Custom Dark Mode Toggle Element */
-.toggle-theme-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-}
-
-.toggle-theme-wrapper span {
-  text-transform: uppercase;
-  font-size: 14px;
-  font-family: "Coiny", sans-serif;
-  color: var(--secondary-font-color);
-}
-
-.toggle-theme {
-  position: relative;
-  display: inline-block;
-  height: 34px;
-  width: 60px;
-}
-
-.toggle-theme input {
-  display: none;
-}
-
-/* .toggle-text {
-  background-color: #1e293b;
-  padding: 3px 10px 0 10px;
-  border-radius: 100px;
-} */
-
-.slider {
-  background-color: #fbbf24;
-  position: absolute;
-  cursor: pointer;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  transition: 0.2s;
-}
-
-.slider:before {
-  background-color: #f1f5f9;
-  bottom: 4px;
-  content: "";
-  height: 26px;
-  left: 4px;
-  position: absolute;
-  transition: 0.4s;
-  width: 26px;
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-  background-color: #e2e8f0;
-}
-
-input:checked + .slider {
-  background-color: #94a3b8;
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-/* //////////////////////css toggle */
-
-/* body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 .toggle-checkbox {
   position: absolute;
   opacity: 0;
@@ -88,10 +8,10 @@ input:checked + .slider {
 
 .toggle-slot {
   position: relative;
-  height: 10em;
-  width: 20em;
-  border: 5px solid #e4e7ec;
-  border-radius: 10em;
+  height: 34px;
+  width: 75px;
+  /* border: 5px solid #e4e7ec; */
+  border-radius: 160px;
   background-color: white;
   /* box-shadow: 0px 10px 25px #e4e7ec; */
   transition: background-color 250ms;
@@ -102,63 +22,63 @@ input:checked + .slider {
 }
 
 .toggle-button {
-  transform: translate(11.75em, 1.75em);
+  transform: translate(42px, 4px);
   position: absolute;
-  height: 6.5em;
-  width: 6.5em;
+  height: 26px;
+  width: 26px;
   border-radius: 50%;
   background-color: #ffeccf;
-  box-shadow: inset 0px 0px 0px 0.75em #ffbb52;
+  box-shadow: inset 0px 0px 0px 2px #ffbb52;
   transition: background-color 250ms, border-color 250ms,
     transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
 }
 
 .toggle-checkbox:checked ~ .toggle-slot .toggle-button {
   background-color: #485367;
-  box-shadow: inset 0px 0px 0px 0.75em white;
-  transform: translate(1.75em, 1.75em);
+  box-shadow: inset 0px 0px 0px 2px white;
+  transform: translate(6px, 4px);
 }
 
 .sun-icon {
   position: absolute;
-  height: 6em;
-  width: 6em;
+  height: 26px;
+  width: 26px;
   color: #ffbb52;
 }
 
 .sun-icon-wrapper {
   position: absolute;
-  height: 6em;
-  width: 6em;
+  height: 24px;
+  width: 24px;
   opacity: 1;
-  transform: translate(2em, 2em) rotate(15deg);
+  transform: translate(7px, 4px) rotate(15deg);
   transform-origin: 50% 50%;
   transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
 }
 
 .toggle-checkbox:checked ~ .toggle-slot .sun-icon-wrapper {
   opacity: 0;
-  transform: translate(3em, 2em) rotate(0deg);
+  transform: translate(6px, 4px) rotate(0deg);
 }
 
 .moon-icon {
   position: absolute;
-  height: 6em;
-  width: 6em;
+  height: 26px;
+  width: 26px;
   color: white;
 }
 
 .moon-icon-wrapper {
   position: absolute;
-  height: 6em;
-  width: 6em;
+  height: 24px;
+  width: 24px;
   opacity: 0;
-  transform: translate(11em, 2em) rotate(0deg);
+  transform: translate(26px, 6px) rotate(0deg);
   transform-origin: 50% 50%;
   transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2.5, 0.46, 0.71);
 }
 
 .toggle-checkbox:checked ~ .toggle-slot .moon-icon-wrapper {
   opacity: 1;
-  transform: translate(12em, 2em) rotate(-15deg);
+  transform: translate(45px, 4px) rotate(-15deg);
 }
