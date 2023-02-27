@@ -40,16 +40,10 @@ body {
 }
 
 .header {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   display: grid;
   row-gap: 48px;
 }
-/* .header {
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
 
 .main {
   display: grid;
@@ -99,6 +93,10 @@ h1 {
 .facts-container {
   overflow-y: scroll;
   padding-bottom: 40px;
+}
+
+.facts-container::-webkit-scrollbar {
+  display: none;
 }
 
 .fact {
